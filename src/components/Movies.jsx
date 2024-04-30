@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import 'index.css';
 
 const Movies = () => {
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
