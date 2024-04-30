@@ -20,7 +20,7 @@ const Cast = ({ cast }) => {
                 e.target.src = '/placeholder-actor-image.jpg';
               }}
             />
-            <a>{actor.name}</a>
+            <p>{actor.name}</p>
           </li>
         ))}
       </ul>

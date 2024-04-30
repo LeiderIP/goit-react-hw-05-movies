@@ -1,4 +1,3 @@
-
 @import './components/Home.css';
 @import './components/MovieDetails.css';
 @import './components/SearchBar.css';
@@ -57,11 +56,11 @@ button {
   }
 }
 
-a {
+a,
+p {
   text-decoration: none;
   color: #c5c6c8;
   font-weight: bold;
-  text-align: center;
 }
 
 h2 {
@@ -75,10 +74,6 @@ h2 {
 
 h3 {
   color: #fff;
-}
-
-p {
-  color: #c5c6c8;
 }
 
 .reviews-ul {
