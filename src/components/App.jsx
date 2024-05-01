@@ -26,13 +26,12 @@ const App = () => {
   }, [currentRoute]);
 
   useEffect(() => {
- 
-    if (window.performance.navigation.type === 2) {
+    if (window.performance === 2) {
       if (currentRoute) {
         navigate(currentRoute);
       }
     }
-  }, [currentRoute]);
+  }, [currentRoute, navigate]); 
 
   return (
     <div>
