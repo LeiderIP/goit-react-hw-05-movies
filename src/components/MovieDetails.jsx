@@ -12,9 +12,8 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [cast, setCast] = useState([]);
   const [reviews, setReviews] = useState([]);
-  const [showCast, setShowCast] = useState(false);
-  const [showReviews, setShowReviews] = useState(false);
-
+  const [showComponent, setShowComponent] = useState('none'); 
+  
   useEffect(() => {
     const fetchMovieData = async () => {
       const movieDetails = await getMovieDetails(movieId);
@@ -33,16 +32,16 @@ const MovieDetails = () => {
     if (movie.poster_path) {
       return `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     } else {
-      return '/placeholder-movie-poster.jpg'; 
+      return '/placeholder-movie-poster.jpg';
     }
   };
 
   const handleShowCast = () => {
-    setShowCast(!showCast);
+    setShowComponent('cast');
   };
 
   const handleShowReviews = () => {
-    setShowReviews(!showReviews);
+    setShowComponent('reviews');
   };
 
   const handleBackToMainMenu = () => {
@@ -55,8 +54,7 @@ const MovieDetails = () => {
         Back to Main Menu
       </button>
       <div className="movie-details">
-        <img src={getPosterUrl()} alt={movie.title} className="movie-poster" />{' '}
-        {/* Imagen de la película */}
+        <img src={getPosterUrl()} alt={movie.title} className="movie-poster" />
         <div className="text">
           <h1>{movie.title}</h1>
           <p>{movie.overview}</p>
@@ -66,8 +64,8 @@ const MovieDetails = () => {
         <button onClick={handleShowCast}>Show Cast</button>
         <button onClick={handleShowReviews}>Show Reviews</button>
       </div>
-      {showCast && <Cast cast={cast} />}
-      {showReviews && <Reviews reviews={reviews} />}
+      {showComponent === 'cast' && <Cast cast={cast} />}
+      {showComponent === 'reviews' && <Reviews reviews={reviews} />}
     </div>
   );
 };
