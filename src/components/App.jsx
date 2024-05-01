@@ -26,12 +26,10 @@ const App = () => {
   }, [currentRoute]);
 
   useEffect(() => {
-    if (window.performance === 2) {
-      if (currentRoute) {
-        navigate(currentRoute);
-      }
+    if (currentRoute) {
+      navigate(currentRoute);
     }
-  }, [currentRoute, navigate]); 
+  }, [currentRoute, navigate]);
 
   return (
     <div>
