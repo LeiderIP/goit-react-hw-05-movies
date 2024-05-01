@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import Home from './Home';
 import Movies from './Movies';
 import MovieDetails from './MovieDetails';
@@ -9,6 +9,31 @@ import SearchBar from './SearchBar';
 import 'index.css';
 
 const App = () => {
+  const navigate = useNavigate();
+  const [currentRoute, setCurrentRoute] = useState(null);
+
+  useEffect(() => {
+    const storedRoute = localStorage.getItem('currentRoute');
+    if (storedRoute) {
+      setCurrentRoute(storedRoute);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (currentRoute) {
+      localStorage.setItem('currentRoute', currentRoute);
+    }
+  }, [currentRoute]);
+
+  useEffect(() => {
+ 
+    if (window.performance.navigation.type === 2) {
+      if (currentRoute) {
+        navigate(currentRoute);
+      }
+    }
+  }, [currentRoute]);
+
   return (
     <div>
       <Routes>
